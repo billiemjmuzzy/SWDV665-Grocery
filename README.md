@@ -2,7 +2,7 @@
 
 ## Screencast
 
-![Screencast of project](screencast/wk2-screencast.mp4)
+![Screencast of project](.\groceries\screencast\wk2-groceries.gif)
 
 ## Questions
 
