@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
@@ -38,22 +38,25 @@ export class GroceryPage implements OnInit {
 
   ngOnInit() {
   }
-  
-  async removeItem(item) {
-    console.log("Removing ", item);
+
+  async removeItem(item, index) {
+    console.log("Removing ", item, index);
     const toast = await this.toastCtrl.create({
       message: 'Removing ' + item.name,
       duration: 3000,
       position: 'top'
     });
-  
+
     toast.present();
+
+    this.items.splice(index, 1);
   }
 
   addItem() {
     console.log("Adding Item");
     this.showAddItemPrompt();
   }
+
 
   async showAddItemPrompt() {
     const alert = await this.alertController.create({

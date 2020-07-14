@@ -13,13 +13,13 @@
     </ion-toolbar>
   </ion-header>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of items">
+    <ion-item-sliding *ngFor="let item of items; let i = index">
       <ion-item>
         <ion-label>{{item.name}}</ion-label>
         <ion-note slot="end">{{item.quantity}}</ion-note>
       </ion-item>
       <ion-item-options side="end">
-        <ion-button (click)="removeItem(item)" color="danger" icon-start>
+        <ion-button (click)="removeItem(item, i)" color="danger" icon-start>
           <ion-icon name="trash"></ion-icon>
           Done
         </ion-button>
