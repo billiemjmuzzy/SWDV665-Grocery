@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class GroceryPage implements OnInit {
 
   ];
 
-  constructor(private toastCtrl: ToastController) {
+  constructor(private toastCtrl: ToastController, private alertController: AlertController) {
 
   }
 
@@ -49,6 +50,48 @@ export class GroceryPage implements OnInit {
     toast.present();
   }
 
+  addItem() {
+    console.log("Adding Item");
+    this.showAddItemPrompt();
+  }
+
+  async showAddItemPrompt() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Add Item',
+      message: "Please enter item...",
+      inputs: [
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: 'name'
+        },
+        {
+          name: 'quantity',
+          type: 'number',
+          placeholder: 'quantity'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: item => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Add',
+          handler: item => {
+            console.log('Item added', item);
+            this.items.push(item);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
 
 
