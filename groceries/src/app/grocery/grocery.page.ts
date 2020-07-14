@@ -59,7 +59,7 @@ export class GroceryPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Add Item',
-      message: "Please enter item to add to grocery list",
+      message: "Please enter item to add to grocery list.",
       inputs: [
         {
           name: 'name',
