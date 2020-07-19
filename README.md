@@ -10,7 +10,7 @@
 
 1. **How many hours do you estimate you used completing this assignment?** 2hrs
 2. **What was easiest for you when completing this assignment?** Removing items
-3. **What was the most difficult challenge you experienced when completing this assignment?** The video was not too helpful as it is three versions behind. 
+3. **What was the most difficult challenge you experienced when completing this assignment?** The video caused frustrations since it was a few versions behind. 
 
 # Week 2 | Create Groceries App
 
