@@ -2,6 +2,10 @@
 
 ## Screencast
 
+*Note: The screencast software caused the app to be glitchy (text flipping upside down, flickering, etc.)*
+
+![Screencast of project](https://github.com/billiemjmuzzy/SWDV665-Grocery/blob/master/groceries/screencast/wk2-groceries.gif)
+
 ## Questions 
 
 1. **How many hours do you estimate you used completing this assignment?** 2hrs
