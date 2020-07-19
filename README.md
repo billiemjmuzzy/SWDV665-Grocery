@@ -4,7 +4,7 @@
 
 *Note: The screencast software caused the app to be glitchy (text flipping upside down, flickering, etc.)*
 
-![Screencast of project](https://github.com/billiemjmuzzy/SWDV665-Grocery/blob/master/groceries/screencast/wk2-groceries.gif)
+![Screencast of project](https://github.com/billiemjmuzzy/SWDV665-Grocery/blob/master/groceries/screencast/wk3-groceries.gif)
 
 ## Questions 
 
