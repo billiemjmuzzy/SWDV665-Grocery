@@ -19,6 +19,10 @@
         <ion-note slot="end">{{item.quantity}}</ion-note>
       </ion-item>
       <ion-item-options side="end">
+        <ion-button (click)="editItem(item, i)" color="primary" icon-start>
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </ion-button>
         <ion-button (click)="removeItem(item, i)" color="danger" icon-start>
           <ion-icon name="trash"></ion-icon>
           Done
