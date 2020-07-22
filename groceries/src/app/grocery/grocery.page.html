@@ -7,13 +7,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+<div class="ion-text-center">
+  <h3 *ngIf="loadItems().length === 0">
+    No items available on the list, please add a item. 
+  </h3>
+</div>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">{{title}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of items; let i = index">
+    <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
       <ion-item>
         <ion-label>{{item.name}}</ion-label>
         <ion-note slot="end">{{item.quantity}}</ion-note>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
+import { GroceriesServiceService } from '../groceries-service.service';
 
 
 @Component({
@@ -13,31 +13,15 @@ export class GroceryPage implements OnInit {
 
   title = "Billie's Grocery List";
 
-  items = [
-    {
-      name: "Milk",
-      quantity: 2
-    },
-    {
-      name: "Bread",
-      quantity: 1
-    },
-    {
-      name: "Banana",
-      quantity: 3
-    },
-    {
-      name: "Sugar",
-      quantity: 1
-    }
-
-  ];
-
-  constructor(private toastCtrl: ToastController, private alertController: AlertController) {
+  constructor(private toastCtrl: ToastController, private alertController: AlertController, private dataService: GroceriesServiceService) {
 
   }
 
   ngOnInit() {
+  }
+
+  loadItems() {
+    return this.dataService.items;
   }
 
 
@@ -76,7 +60,7 @@ export class GroceryPage implements OnInit {
           text: 'Add',
           handler: item => {
             console.log('Item added', item);
-            this.items.push(item);
+            this.dataService.addItem(item);
           }
         }
       ]
@@ -128,7 +112,7 @@ export class GroceryPage implements OnInit {
           text: 'Edit',
           handler: item => {
             console.log('Item edited', item);
-            this.items[index] = item;
+            this.dataService.editItem(item, index)
           }
         }
       ]
@@ -145,10 +129,9 @@ export class GroceryPage implements OnInit {
     });
 
     toast.present();
+    this.dataService.removeItem(index);
 
-    this.items.splice(index, 1);
+
   }
-
-
 
 }
