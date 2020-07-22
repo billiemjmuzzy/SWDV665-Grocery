@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { GroceriesServiceService } from '../groceries-service.service';
+import { InputDialogService } from '../input-dialog.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class GroceryPage implements OnInit {
 
   title = "Billie's Grocery List";
 
-  constructor(private toastCtrl: ToastController, private alertController: AlertController, private dataService: GroceriesServiceService) {
+  constructor(private toastCtrl: ToastController, private alertController: AlertController, private dataService: GroceriesServiceService, private inputDialogService: InputDialogService) {
 
   }
 
@@ -27,47 +28,9 @@ export class GroceryPage implements OnInit {
 
   addItem() {
     console.log("Adding Item");
-    this.showAddItemPrompt();
+    this.inputDialogService.showAddItemPrompt();
   }
 
-
-  async showAddItemPrompt() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Add Item',
-      message: "Please enter item to add to grocery list.",
-      inputs: [
-        {
-          name: 'name',
-          type: 'text',
-          placeholder: 'name'
-        },
-        {
-          name: 'quantity',
-          type: 'number',
-          placeholder: 'quantity'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: item => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Add',
-          handler: item => {
-            console.log('Item added', item);
-            this.dataService.addItem(item);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
 
   async editItem(item, index) {
     console.log("Editing ", item, index);
@@ -78,47 +41,10 @@ export class GroceryPage implements OnInit {
     });
 
     toast.present();
-    this.showEditItemPrompt(item, index);
+    this.inputDialogService.showEditItemPrompt(item, index);
   }
 
-  async showEditItemPrompt(item, index) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Add Item',
-      message: "Please edit grocery list.",
-      inputs: [
-        {
-          name: 'name',
-          type: 'text',
-          placeholder: 'name',
-          value: item.name
-        },
-        {
-          name: 'quantity',
-          type: 'number',
-          placeholder: 'quantity',
-          value: item.quantity
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: item => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Edit',
-          handler: item => {
-            console.log('Item edited', item);
-            this.dataService.editItem(item, index)
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
+ 
 
   async removeItem(item, index) {
     console.log("Removing ", item, index);
