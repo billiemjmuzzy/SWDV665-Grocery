@@ -7,62 +7,25 @@ import { GroceriesServiceService } from './groceries-service.service';
 })
 export class InputDialogService {
 
-  constructor(private alertController: AlertController, private dataService: GroceriesServiceService ) { }
-  async showAddItemPrompt() {
+  constructor(private alertController: AlertController, private dataService: GroceriesServiceService) { }
+
+  async showPrompt(item?, index?) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Add Item',
-      message: "Please enter item to add to grocery list.",
-      inputs: [
-        {
-          name: 'name',
-          type: 'text',
-          placeholder: 'name'
-        },
-        {
-          name: 'quantity',
-          type: 'number',
-          placeholder: 'quantity'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: item => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Add',
-          handler: item => {
-            console.log('Item added', item);
-            this.dataService.addItem(item);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
-  async showEditItemPrompt(item, index) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Add Item',
-      message: "Please edit grocery list.",
+      header: item ? 'Edit Item' : 'Add Item',
+      message: item ? "Please edit grocery list." : "Please enter item to add to grocery list.",
       inputs: [
         {
           name: 'name',
           type: 'text',
           placeholder: 'name',
-          value: item.name
+          value: item ? item.name : null
         },
         {
           name: 'quantity',
           type: 'number',
           placeholder: 'quantity',
-          value: item.quantity
+          value: item ? item.quantity : null
         }
       ],
       buttons: [
@@ -74,10 +37,16 @@ export class InputDialogService {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Edit',
+          text: 'Save',
           handler: item => {
-            console.log('Item edited', item);
-            this.dataService.editItem(item, index)
+            console.log('Save clicked', item);
+            if (index !== undefined) {
+              this.dataService.editItem(item, index)
+            }
+            else {
+              this.dataService.addItem(item);
+            }
+
           }
         }
       ]

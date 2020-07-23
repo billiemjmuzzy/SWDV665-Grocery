@@ -28,7 +28,7 @@ export class GroceryPage implements OnInit {
 
   addItem() {
     console.log("Adding Item");
-    this.inputDialogService.showAddItemPrompt();
+    this.inputDialogService.showPrompt();
   }
 
 
@@ -41,10 +41,10 @@ export class GroceryPage implements OnInit {
     });
 
     toast.present();
-    this.inputDialogService.showEditItemPrompt(item, index);
+    this.inputDialogService.showPrompt(item, index);
   }
 
- 
+
 
   async removeItem(item, index) {
     console.log("Removing ", item, index);
