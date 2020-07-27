@@ -2,7 +2,7 @@
 
 ## Screencast
 
-![Screencast of project]()
+![Screencast of project](https://github.com/billiemjmuzzy/SWDV665-Grocery/blob/develop/groceries/screencast/wk4-groceries.gif)
 
 ## Questions 
 
