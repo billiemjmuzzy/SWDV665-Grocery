@@ -12,13 +12,22 @@
       <ion-title size="large">{{title}}</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="ion-text-center">
+    <h3 *ngIf="loadItems().length === 0">
+      No items available on the list, please add a item.
+    </h3>
+  </div>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of items; let i = index">
+    <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
       <ion-item>
         <ion-label>{{item.name}}</ion-label>
         <ion-note slot="end">{{item.quantity}}</ion-note>
       </ion-item>
       <ion-item-options side="end">
+        <ion-button (click)="editItem(item, i)" color="primary" icon-start>
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </ion-button>
         <ion-button (click)="removeItem(item, i)" color="danger" icon-start>
           <ion-icon name="trash"></ion-icon>
           Done

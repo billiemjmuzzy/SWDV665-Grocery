@@ -1,3 +1,15 @@
+# Week 4 | Groceries App: CRUD Operations
+
+## Screencast
+
+![Screencast of project]()
+
+## Questions 
+
+1. **How many hours do you estimate you used completing this assignment?** 1.5
+2. **What was easiest for you when completing this assignment?** Assignment went smoothly with the exception of services.
+3. **What was the most difficult challenge you experienced when completing this assignment?** Setting up the services. The directions in the video are no longer correct. 
+
 # Week 3 | Groceries App: Adding and Removing Items
 
 ## Screencast
